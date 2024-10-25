@@ -14,10 +14,13 @@ import java.util.List;
 
 public final class FriendSpigot extends JavaPlugin implements PluginMessageListener {
 
+    private static FriendSpigot instance;
+
     private RedisManager redisManager;
 
     @Override
     public void onEnable() {
+        instance = this;
 
         PluginManager pluginManager = Bukkit.getPluginManager();
         pluginManager.registerEvents(new JoinListener(), this);
@@ -65,5 +68,9 @@ public final class FriendSpigot extends JavaPlugin implements PluginMessageListe
 
     public RedisManager getRedisManager() {
         return redisManager;
+    }
+
+    public static FriendSpigot getInstance() {
+        return instance;
     }
 }
